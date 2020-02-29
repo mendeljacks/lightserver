@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cross-env NODE_PATH=./ node index.js",
     "dev": "cross-env NODE_PATH=./ node --inspect-brk=5885 index.js"
   },
   "repository": {
