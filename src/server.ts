@@ -2,7 +2,7 @@ import { redibase } from 'config/redibase'
 const express = require('express')
 const cors = require('cors')
 var app = express()
-var http = require('https').createServer(app)
+var http = require('http').createServer(app)
 var io = require('socket.io')(http)
 const port = process.env.PORT ? process.env.PORT : 4411
 
