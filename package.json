@@ -1,0 +1,30 @@
+{
+  "name": "lightserver",
+  "version": "1.0.0",
+  "description": "lightserver",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "cross-env NODE_PATH=./ node --inspect-brk=5885 index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mendeljacks/lightserver.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mendeljacks/lightserver/issues"
+  },
+  "homepage": "https://github.com/mendeljacks/lightserver#readme",
+  "dependencies": {
+    "@types/node": "^13.7.7",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.0",
+    "dotenv-safe": "^8.2.0",
+    "express": "^4.17.1",
+    "redibase": "file:../redibase",
+    "socket.io": "^2.3.0",
+    "sucrase": "^3.12.1"
+  }
+}

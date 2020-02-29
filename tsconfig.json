@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "sourceMap": true,
+        "allowJs": true,
+        "baseUrl": "./",
+        "build": true,
+        "noEmit": true,
+        "checkJs": false,
+        "resolveJsonModule": true,
+        "outDir": "./build",
+        "types": [
+            "node",
+            "express",
+            "mocha"
+        ],
+        "skipLibCheck": true,
+        "incremental": true
+    },
+    "include": [
+        "./**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "build",
+    ]
+}
