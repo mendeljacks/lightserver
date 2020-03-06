@@ -22,6 +22,8 @@ app.post('/mode', async (req,res) => {
 io.on('connection', async function (socket) {
     const initial_mode = await redibase.get('mode')
     socket.emit('mode', initial_mode)
+    socket.emit('user_count', socket.client.conn.server.clientsCount)
+    socket.broadcast.emit('user_count', socket.client.conn.server.clientsCount)
     // console.log('a user connected')
     // socket.on('disconnect', function () {
     //     console.log('user disconnected')
@@ -32,7 +34,11 @@ io.on('connection', async function (socket) {
     redibase.on('mode', async (new_val, old_val) => {
         socket.emit('mode', new_val)
     })
+    socket.on('disconnect', async function () {
+        socket.broadcast.emit('user_count', socket.client.conn.server.clientsCount)
+    })
 })
+
 
 http.listen(port, function () {
     console.log('listening on port', port);
