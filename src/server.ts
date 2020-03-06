@@ -9,10 +9,14 @@ const port = process.env.PORT ? process.env.PORT : 4411
 app.use(cors())
 app.use(express.json({ limit: '50mb' }))
 
-app.post('/mode', (req,res) => {
+app.post('/mode', async (req,res) => {
     if (req.body.mode !== false && req.body.mode !==true) return res.status(400).json('mode must be true or false')
-    redibase.set('mode', req.body.mode)
-    res.status(201).json('done')
+    try {
+        const response = await redibase.set('mode', req.body.mode)
+        res.status(201).json('done')
+    } catch (error) {
+        res.status(400).json(error)
+    }
 })
 
 io.on('connection', function (socket) {
@@ -23,7 +27,7 @@ io.on('connection', function (socket) {
     // socket.on('chat message', function (msg) {
     //     console.log('message: ' + msg)
     // })
-    redibase.on('mode', async (old_val, new_val) => {
+    redibase.on('mode', async (new_val, old_val) => {
         socket.emit('mode', new_val)
     })
 })
