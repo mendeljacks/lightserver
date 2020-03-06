@@ -19,7 +19,9 @@ app.post('/mode', async (req,res) => {
     }
 })
 
-io.on('connection', function (socket) {
+io.on('connection', async function (socket) {
+    const initial_mode = await redibase.get('mode')
+    socket.emit('mode', initial_mode)
     // console.log('a user connected')
     // socket.on('disconnect', function () {
     //     console.log('user disconnected')
